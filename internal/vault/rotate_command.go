@@ -4,8 +4,8 @@ import (
 	"context"
 	"crypto/rand"
 	"flag"
-	"github.com/damejeras/untold"
-	"github.com/damejeras/untold/internal/cli"
+	"github.com/JordanSinko/untold"
+	"github.com/JordanSinko/untold/internal/cli"
 	"github.com/google/subcommands"
 	"golang.org/x/crypto/nacl/box"
 	"io/ioutil"
@@ -17,7 +17,7 @@ type rotateCmd struct {
 	privateKey string
 }
 
-func NewRotateCommand() subcommands.Command { return &rotateCmd{}}
+func NewRotateCommand() subcommands.Command { return &rotateCmd{} }
 
 func (r *rotateCmd) Name() string { return "rotate-keys" }
 

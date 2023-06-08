@@ -5,8 +5,8 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"flag"
-	"github.com/damejeras/untold"
-	"github.com/damejeras/untold/internal/cli"
+	"github.com/JordanSinko/untold"
+	"github.com/JordanSinko/untold/internal/cli"
 	"github.com/google/subcommands"
 	"golang.org/x/crypto/nacl/box"
 	"os"
@@ -43,7 +43,7 @@ func (s *showCmd) Execute(ctx context.Context, f *flag.FlagSet, args ...interfac
 		return subcommands.ExitUsageError
 	}
 
-	environment :=  s.environment
+	environment := s.environment
 	if environment == "" || environment == untold.DefaultEnvironment {
 		environment = untold.DefaultEnvironment
 		cli.Warnf("No environment provided, using default - %q", environment)

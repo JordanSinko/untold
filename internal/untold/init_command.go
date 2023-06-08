@@ -5,8 +5,8 @@ import (
 	"crypto/rand"
 	"embed"
 	"flag"
-	"github.com/damejeras/untold"
-	"github.com/damejeras/untold/internal/cli"
+	"github.com/JordanSinko/untold"
+	"github.com/JordanSinko/untold/internal/cli"
 	"github.com/google/subcommands"
 	"golang.org/x/crypto/nacl/box"
 	"os"
@@ -20,7 +20,7 @@ type initCmd struct {
 	environment string
 }
 
-func NewInitCommand() subcommands.Command { return &initCmd{ environment: untold.DefaultEnvironment } }
+func NewInitCommand() subcommands.Command { return &initCmd{environment: untold.DefaultEnvironment} }
 
 func (i *initCmd) Name() string { return "init" }
 
@@ -69,7 +69,6 @@ func (i *initCmd) Execute(ctx context.Context, f *flag.FlagSet, args ...interfac
 	}
 
 	if err := os.WriteFile(filepath.Join(directory, ".gitignore"), gitignoreContent, 0644); err != nil {
-
 
 		cli.Wrapf(err, "create .gitignore file")
 

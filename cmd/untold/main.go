@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/damejeras/untold/internal/secret"
-	"github.com/damejeras/untold/internal/untold"
-	"github.com/damejeras/untold/internal/vault"
+	"github.com/JordanSinko/untold/internal/secret"
+	"github.com/JordanSinko/untold/internal/untold"
+	"github.com/JordanSinko/untold/internal/vault"
 	"github.com/google/subcommands"
 	"math/rand"
 	"os"

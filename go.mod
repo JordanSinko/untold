@@ -1,4 +1,4 @@
-module github.com/damejeras/untold
+module github.com/JordanSinko/untold
 
 go 1.16
 

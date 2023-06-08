@@ -4,15 +4,15 @@ import (
 	"context"
 	"crypto/rand"
 	"flag"
-	"github.com/damejeras/untold"
-	"github.com/damejeras/untold/internal/cli"
+	"github.com/JordanSinko/untold"
+	"github.com/JordanSinko/untold/internal/cli"
 	"github.com/google/subcommands"
 	"golang.org/x/crypto/nacl/box"
 	"os"
 	"path/filepath"
 )
 
-type createCmd struct {}
+type createCmd struct{}
 
 func NewCreateCommand() subcommands.Command { return &createCmd{} }
 
@@ -43,13 +43,13 @@ func (c createCmd) Execute(ctx context.Context, f *flag.FlagSet, args ...interfa
 		return subcommands.ExitUsageError
 	}
 
-	if _, err := os.Stat(environmentName+".public"); !os.IsNotExist(err) {
+	if _, err := os.Stat(environmentName + ".public"); !os.IsNotExist(err) {
 		cli.Errorf("file %q already exists", environmentName+".public")
 
 		return subcommands.ExitUsageError
 	}
 
-	if _, err := os.Stat(environmentName+".private"); !os.IsNotExist(err) {
+	if _, err := os.Stat(environmentName + ".private"); !os.IsNotExist(err) {
 		cli.Errorf("file %q already exists", environmentName+".private")
 
 		return subcommands.ExitUsageError

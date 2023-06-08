@@ -7,8 +7,8 @@ import (
 	"encoding/hex"
 	"flag"
 	"fmt"
-	"github.com/damejeras/untold"
-	"github.com/damejeras/untold/internal/cli"
+	"github.com/JordanSinko/untold"
+	"github.com/JordanSinko/untold/internal/cli"
 	"github.com/google/subcommands"
 	"golang.org/x/crypto/nacl/box"
 	"os"
@@ -19,7 +19,9 @@ type changeCmd struct {
 	environment, privateKey string
 }
 
-func NewChangeCommand() subcommands.Command { return &changeCmd{environment: untold.DefaultEnvironment} }
+func NewChangeCommand() subcommands.Command {
+	return &changeCmd{environment: untold.DefaultEnvironment}
+}
 
 func (c *changeCmd) Name() string { return "change-secret" }
 
@@ -45,7 +47,7 @@ func (c *changeCmd) Execute(ctx context.Context, f *flag.FlagSet, args ...interf
 		return subcommands.ExitUsageError
 	}
 
-	environment :=  c.environment
+	environment := c.environment
 	if environment == "" || environment == untold.DefaultEnvironment {
 		environment = untold.DefaultEnvironment
 		cli.Warnf("No environment provided, using default - %q", environment)
@@ -135,7 +137,6 @@ func (c *changeCmd) Execute(ctx context.Context, f *flag.FlagSet, args ...interf
 
 		return subcommands.ExitFailure
 	}
-
 
 	encryptedValue, err := box.SealAnonymous(nil, []byte(value), &publicKey, rand.Reader)
 	if err != nil {
