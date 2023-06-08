@@ -5,9 +5,10 @@ import (
 	"embed"
 	"encoding/hex"
 	"fmt"
-	"golang.org/x/crypto/nacl/box"
 	"os"
-	"path/filepath"
+	"path"
+
+	"golang.org/x/crypto/nacl/box"
 )
 
 const (
@@ -60,14 +61,14 @@ func (v *vault) loadKeys() error {
 		return nil
 	}
 
-	base64PublicKey, err := v.embeddedFiles.ReadFile(filepath.Join(v.pathPrefix, v.environment+".public"))
+	base64PublicKey, err := v.embeddedFiles.ReadFile(path.Join(v.pathPrefix, v.environment+".public"))
 	if err != nil {
 		return fmt.Errorf("read public key file for %q environment: %s", v.environment, err)
 	}
 
 	base64PrivateKey := []byte(os.Getenv(v.privateKeyEnv))
 	if len(base64PrivateKey) == 0 {
-		base64PrivateKey, err = v.embeddedFiles.ReadFile(filepath.Join(v.pathPrefix, v.environment+".private"))
+		base64PrivateKey, err = v.embeddedFiles.ReadFile(path.Join(v.pathPrefix, v.environment+".private"))
 		if err != nil {
 			return fmt.Errorf("read private key file for %q environment: %s", v.environment, err)
 		}
@@ -89,7 +90,7 @@ func (v *vault) loadKeys() error {
 func (v *vault) findSecret(name string) (string, error) {
 	md5Hash := md5.Sum([]byte(name))
 
-	base64EncodedSecret, err := v.embeddedFiles.ReadFile(filepath.Join(v.pathPrefix, v.environment, hex.EncodeToString(md5Hash[:])))
+	base64EncodedSecret, err := v.embeddedFiles.ReadFile(path.Join(v.pathPrefix, v.environment, hex.EncodeToString(md5Hash[:])))
 	if err != nil {
 		if os.IsNotExist(err) {
 			return "", fmt.Errorf("secret %q for %q environment not found", name, v.environment)
