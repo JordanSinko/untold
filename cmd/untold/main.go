@@ -3,10 +3,10 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/JordanSinko/untold/internal/secret"
-	"github.com/JordanSinko/untold/internal/untold"
-	"github.com/JordanSinko/untold/internal/vault"
 	"github.com/google/subcommands"
+	"github.com/jordansinko/untold/internal/secret"
+	"github.com/jordansinko/untold/internal/untold"
+	"github.com/jordansinko/untold/internal/vault"
 	"math/rand"
 	"os"
 	"time"

@@ -11,7 +11,7 @@ Go version 1.16 or later is required.
 ## Installation & Usage
 
 ```
-$ go install github.com/JordanSinko/untold/cmd/untold@v0.0.3-alpha
+$ go install github.com/jordansinko/untold/cmd/untold@v0.0.3-alpha
 
 $ untold init
 WARNING: Directory name not provided, using default - "untold"
@@ -42,7 +42,7 @@ $ cd ..
 
 $ go mod init example
 
-$ go get github.com/JordanSinko/untold@v0.0.3-alpha
+$ go get github.com/jordansinko/untold@v0.0.3-alpha
 
 $ touch main.go
 ```
@@ -56,7 +56,7 @@ import (
 	"embed"
 	"fmt"
 
-	"github.com/JordanSinko/untold"
+	"github.com/jordansinko/untold"
 )
 
 // Let's embed folder `untold` into application.
